@@ -23,6 +23,15 @@ clicks = tk.IntVar(value=0)
 def count_click():
     clicks.set(clicks.get)()( + 1)
     counter_label.config(text=f"clicks: {clicks.get}")
+
+click_btn = tk.Button(root, text="+1 clicks",command=count_click)
+click_btn.pack(pady=5)    
+
+
+counter_label = tk.Label(root , text="click: 0")
+counter_label.pack()
+
+def reset_all():
     
 
 
