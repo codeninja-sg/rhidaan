@@ -26,16 +26,25 @@ answers=[
 "Absolutely",
 "Up to you"
 ]
-ask_btn = tk.Button(root, text="ask", width=12)
-ask_btn.pack(pady=5)
+
 
 def give_answer():
    question = question_entry.get().strip()
+   if question == "":
+      answer_label.config(text="Please type a question")
+      return 
+   reply=random.choice(answers)
+   answer_label.config(text=reply)
+
+ask_btn = tk.Button(root, text="Ask", width=12)
+ask_btn.pack(pady=5)
+
 
 #connect the button
 def ask_pressed():
    give_answer()
 ask_btn.config(command=ask_pressed)
+
 
 
 
