@@ -22,6 +22,21 @@ guess_entry.pack(pady=5)
 
 
 result_label = tk.Label(root, text ="Good luck!", font=("Arial", 14))
+result_label.pack(pady=10)
 
+secret=random.randit(1, 100)
+
+def check_guess():
+    text = guess_entry.get().strip()
+    if not text.isdigit():
+        result_label.config(text="Please enter a number!")
+        return
+
+    guess = int(text)
+
+    if guess< secret
+    result_label.config(text= Too low !)
+    elif guess > secret:
+    result_label.config(Too high)
 
 root.mainloop()
