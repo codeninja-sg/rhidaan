@@ -32,9 +32,9 @@ def end_draw (event):
     global last_x, last_y 
     last_x, last_y = None,None 
 
-canvas.bind("<Button-1>", start_draw)   
-canvas.bind ("< B1- Motion >", draw)   
-canvas.addtag_closest    
+canvas.bind("<Button-1>", start_draw)
+canvas.bind ("<B1-Motion>", draw) 
+canvas.bind ("<ButtonRelease-1>", end_draw)
 
 
 
