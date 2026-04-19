@@ -39,35 +39,42 @@ def move_right(event):
 root.bind('<Left>', move_left)
 root.bind('<Right>', move_right)
 
-root.mainloop()
+ball_r = 12
+ball_x = W // 2
+ball_y = 100
+ball_dx = 3
+ball_dy = 3
 
+ball = canvas.create_oval( ball_x - ball_r, ball_y - ball_r, ball_x + ball_r, ball_y + ball_r, fill= 'white' , outline='')
 
+score  = 0
+game_over = False
 
+score_label =tk.Label(root, text='score: 0',
+                      font=('Arial', 14), bg='black', fg='White')
+score_label.pack()
 
+def game_loop():
+    global ball_x, ball_y, ball_dx, ball_dy, score, game_over
 
+    if game_over:
+        return
+    
+    ball_x += ball_dx
+    ball_y += ball_dy
+    
+                    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        
 
 root.mainloop()
+
+
+
+
+
+
+
+
+
+
