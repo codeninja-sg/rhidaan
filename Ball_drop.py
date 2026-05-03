@@ -26,7 +26,7 @@ def move_left(event):
 
     if pad_x < pad_w // 2:
         pad_x = pad_w // 2
-        canvas.coords(Paddle, pad_x - pad_w//2, pad_y - pad_h//2, pad_x + pad_w//2, pad_y + pad_h//2)
+    canvas.coords(Paddle, pad_x - pad_w//2, pad_y - pad_h//2, pad_x + pad_w//2, pad_y + pad_h//2)
 
 def move_right(event):
     global pad_x
@@ -34,7 +34,7 @@ def move_right(event):
 
     if pad_x > W - pad_w // 2:
         pad_x = W - pad_w // 2
-        canvas.coords(Paddle, pad_x - pad_w//2, pad_y - pad_h//2, pad_x + pad_w//2, pad_y + pad_h//2)
+    canvas.coords(Paddle, pad_x - pad_w//2, pad_y - pad_h//2, pad_x + pad_w//2, pad_y + pad_h//2)
 
 root.bind('<Left>', move_left)
 root.bind('<Right>', move_right)
@@ -63,18 +63,36 @@ def game_loop():
     ball_x += ball_dx
     ball_y += ball_dy
     
-                    
+    if ball_x - ball_r <= 0 or ball_x +ball_r >=:
+        ball_dx = -ball_dy
+
+    if ball_y - ball_r <= 0:
+        ball_dy = -ball_dy 
+    
+    pad_left = pad_x - pad_w // 2
+    pad_right = pad_x + pad_w // 2
+    pad_top = pad_y - pad_h // 2
+
+    if(ball_y + ball_r >= pad_top and 
+    ball_y + ball_r <= pad_top + 10 and
+    pad_left <= ball_x <= pad_right):
+        ball_dy = -abs(ball_dy)
+        score +=1 
+        score_label.config(text=f'score: {score}')
+
+    if ball_y + ball_r >= H:
+        game_over = True 
+        canvas.create_text(W//2, H//2,
+            text=f'Game over! Score: {score}',
+            font=('Arial', 20, 'bold'), fill='red')
+        return
+                         
+
+
 
                         
 
 root.mainloop()
-
-
-
-
-
-
-
 
 
 
